@@ -1,0 +1,342 @@
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+    />
+    <title>Zalo Notification Service</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Zalo Notification Service" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="author" content="Zalo Notification Service" />
+    <meta name="copyright" content="2023 Zalo Notification Service" />
+    <link rel="icon" href="https://stc-oa.zdn.vn/resources/zca-management/favicon.ico" />
+    <meta name="robots" content="index, follow" />
+    <meta name="revisit-after" content="7 days" />
+    <meta property="og:url" content="" />
+    <meta property="og:title" content="Zalo Notification Service" />
+    <meta
+      property="og:image"
+      content="https://stc-oa.zdn.vn/uploads/0fb524389494d9097c6f2f457295e708.jpg"
+    />
+    <meta property="og:image:alt" content="Zalo Notification Service" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;;
+        background-color: #efefef;
+      }
+
+      /* Common styles */
+      .param {
+        font-weight: 700;
+        color: #001a33 !important;
+      }
+      .zalo_zinstant_map_image_slide_item{
+background-size: cover
+}
+
+.zalo_zinstant_map_image_slide_item_img {
+                aspect-ratio: 16/9;
+            }
+
+      .qr {
+        background-image: url('https://stc-oa.zdn.vn/uploads/2023/08/24/80f949f59354ed3c95ebd1c793e692c7.png');
+        background-repeat: no-repeat;
+        background-size: 200px 200px;
+        width: 200px;
+      }
+      .barcode {
+        background-image: url('https://stc-oa.zdn.vn/uploads/2023/08/24/d7fe6f567c5f8e2a88dda40aef8b51a0.png');
+        background-repeat: no-repeat;
+        background-size: 245px 80px;
+        width: 245px;
+      }
+      .zalo_zinstant_ticket_divider_half_circlez,
+      .zalo_zinstant_vertical_line {
+        background-size: cover;
+      }
+      .zalo_zinstant_ticket_banner {
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .zalo_zinstant_header_ticket_img,
+      .zalo_zinstant_banner_icon,
+      .zalo_zinstant_banner {
+        background-repeat: no-repeat;
+      }
+      .zalo_zinstant_ticket_info {
+        max-width: 220px;
+        width: fit-content !important;
+      }
+      .zalo_zinstant_map_info_key_title,
+      .zalo_zinstant_map_info_value_title {
+        word-break: break-word;
+      }
+      /* Preview styles - Background none */
+      .preview-container {
+        margin: 12px auto;
+        max-width: 375px;
+        width: 375px;
+        overflow: hidden;
+      }
+
+      /* Preview styles - Background mobile */
+      .preview-container-mobile.body {
+        background-color: unset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .preview-container-mobile .preview-container {
+        max-width: 400px;
+        width: 400px;
+        height: 800px;
+        background-image: url('https://stc-oa.zdn.vn/uploads/2023/08/24/078db76da831ec1dfe9efcfb33d82651.png');
+        background-repeat: no-repeat;
+        background-size: 400px 800px;
+        padding: 0 8px;
+      }
+      .preview-container-mobile #preview-content {
+        height: calc(100% - 32px);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+      }
+
+      .preview-container-mobile .zalo_zinstant_full {
+        max-width: 600px;
+        width: 400px;
+        max-height: 652px;
+        overflow: auto;
+        border-radius: 10px;
+      }
+
+      @media screen and (max-width: 576px) {
+        .preview-container-mobile #preview-content {
+          align-items: flex-start;
+        }
+        .preview-container-mobile .preview-container {
+          width: 400px;
+          max-height: 100vh;
+          background: none;
+        }
+        .preview-container-mobile .zalo_zinstant_full {
+          width: 375px;
+        }
+      }
+
+      /* Styles for swipe slider */
+      .swiper {
+        width: 350px !important;
+        max-width: 100% !important;
+      }
+      .swiper-horizontal > .swiper-pagination-bullets,
+      .swiper-pagination-bullets.swiper-pagination-horizontal,
+      .swiper-pagination-custom,
+      .swiper-pagination-fraction {
+        bottom: 0;
+      }
+      .swiper-pagination-bullet {
+        background-color: #f4f4f6 !important;
+        opacity: 1;
+      }
+      .swiper-pagination-bullet-active {
+        background-color: #989bae !important;
+        opacity: 1;
+      }
+      a.zalo_zinstant_map_image_slide_item_link {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="preview-container">
+      <div id="preview-content"><html>
+<body style="padding: 8px;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;">
+<div class="zalo_zinstant_full" style="display: flex;flex-direction: row;position: relative;">
+<div data-visibility-condition-action="__zinstant__.condition.platform.in" data-visibility-condition-data="[&quot;ios&quot;]" data-visibility-if-true="visible" data-visibility-if-false="gone" data-visibility-fallback="gone" style="flex-direction: column;flex-shrink: 0;display: flex;position: relative;">
+<div style="min-width: 12px;display: flex;position: relative;">
+</div>
+</div>
+<div class="zalo_zinstant_layout" style="width: 100%;display: flex;flex-direction: column;position: relative;">
+<div class="zalo_zinstant_container" id="general_v2" data-insight-impression-timeout="5" data-insight-label="138631080" data-insight-category="138631080" style="width: 100%;display: flex;flex-direction: column;background-color: white;border-radius: 10px;border-width: 0.5px;border-color: #E1E4EA;position: relative;border-style: solid;">
+<div class="zalo_zinstant_oa_info_wrapper_vertical" style="display: flex;flex-direction: column;margin-left: 12px;margin-right: 12px;margin-top: 16px;position: relative;">
+<img class="zalo_zinstant_oa_info_avatar_vertical_1 zalo_zinstant_oa_info_avatar_vertical" src="https://stc-oa.zdn.vn/uploads/2023/08/29/53dcba646afe567e452e542836b2489e.png" data-width="400" data-height="96" style="width: 60%;margin-bottom: 0px;">
+<div class="zalo_zinstant_oa_info_text_wrapper" style="display: flex;flex-direction: column;position: relative;">
+</div>
+</div>
+<div class="zalo_zinstant_banner_title_wrapper_2 zalo_zinstant_banner_title_wrapper" style="margin-left: 12px;margin-right: 12px;display: flex;flex-direction: row;position: relative;">
+<p class="zalo_zinstant_banner_title zalo_zinstant_banner_title_2 " style="font-weight: medium;font-size: 16;margin-bottom: 6px;line-height: 1.29;margin-top: 0px;color: #001A33;">
+Samsung Galaxy S24 đã tới! Đặt trước ngay hôm nay tại FPT Shop
+</p>
+</div>
+<div class="zalo_zinstant_banner_title_wrapper_3 zalo_zinstant_banner_title_wrapper" style="margin-left: 12px;margin-right: 12px;display: flex;flex-direction: row;position: relative;">
+<p class="zalo_zinstant_banner_title zalo_zinstant_banner_title_3 " style="font-size: 14;margin-bottom: 10px;line-height: 1.29;color: #394E60;">
+Xin gửi tặng 
+<span class="param" style="font-weight: medium;color: #001A33;">
+&lt;customer_name&gt;
+</span>
+<span class="param" style="font-weight: medium;color: #001A33;">
+&lt;customer_name&gt;
+</span>
+mã khách hàng 
+<span class="param" style="font-weight: medium;color: #001A33;">
+&lt;customer_id&gt;
+</span>
+voucher 
+<span class="param" style="font-weight: medium;color: #001A33;">
+&lt;service_name&gt;
+</span>
+giảm ngay 1.000.000đ khi mua dòng điện thoại thông minh mới nhất từ Samsung
+</p>
+</div>
+<div class="zalo_zinstant_banner_title_wrapper_4 zalo_zinstant_banner_title_wrapper" style="margin-left: 12px;margin-right: 12px;display: flex;flex-direction: row;position: relative;">
+<p class="zalo_zinstant_banner_title zalo_zinstant_banner_title_4 " style="font-size: 14;margin-bottom: 10px;line-height: 1.29;color: #394E60;">
+Voucher áp dụng trong thời gian 
+<span class="param" style="font-weight: medium;color: #001A33;">
+&lt;reg_date&gt;
+</span>
+. Đặc biệt 
+<span class="param" style="font-weight: medium;color: #001A33;">
+&lt;customer_name&gt;
+</span>
+sẽ nhận thêm ưu đãi lên tới 10.000.000đ khi đặt trước Galaxy S24 Series từ hôm nay tới 27/1/2024
+</p>
+</div>
+<div class="zalo_zinstant_banner_title_wrapper_5 zalo_zinstant_banner_title_wrapper" style="margin-left: 12px;margin-right: 12px;display: flex;flex-direction: row;position: relative;">
+<p class="zalo_zinstant_banner_title zalo_zinstant_banner_title_5 " style="font-size: 14;margin-bottom: 24px;line-height: 1.29;color: #394E60;">
+Dẫn đầu xu thế với siêu phẩm điện thoại AI thời thượng cùng FPT Shop!
+</p>
+</div>
+<div class="zalo_zinstant_button_list_wrapper" style="display: flex;flex-direction: column;margin-left: 12px;margin-right: 12px;position: relative;">
+<div class="zalo_zinstant_button_primary_wrapper_6 zalo_zinstant_button_primary_wrapper" id="0" data-click-action="action.open.inapp" data-click-data="https://fptshop.com.vn/ctkm/galaxy-ai-moi?utm_source=cdp_zns_ai_moi&amp;utm_medium=cdp+ai+moi&amp;utm_campaign=ai+moi" data-insight-category="3" data-insight-label="button-primary" data-insight-value="0__action.open.inapp__" data-pressed-background-color="#004BB9" style="display: flex;flex-direction: row;padding-left: 12px;padding-right: 12px;padding-top: 12px;padding-bottom: 12px;background-color: #0068ff;border-radius: 4px;justify-content: center;flex-shrink: 0;align-items: center;margin-bottom: 12px;width: 100%;position: relative;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;">
+<p class="zalo_zinstant_button_primary" style="color: white;font-size: 14;text-align: center;align-self: center;">
+Đặt trước siêu hời ngay!
+</p>
+</div>
+</div>
+</div>
+</div>
+<div data-visibility-condition-action="__zinstant__.condition.platform.in" data-visibility-condition-data="[&quot;ios&quot;]" data-visibility-if-true="visible" data-visibility-if-false="gone" data-visibility-fallback="gone" style="flex-direction: column;flex-shrink: 0;display: flex;position: relative;">
+<div style="min-width: 12px;display: flex;position: relative;">
+</div>
+</div>
+</div>
+</body>
+</html></div>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script defer>
+    let backgroundContainer = '';
+    if (backgroundContainer == 'phone') {
+      let body = document.body;
+      body.classList.add('preview-container-mobile');
+    }
+    if ($('.zalo_zinstant_banner_title')) {
+      let arrParagraph = $('.zalo_zinstant_banner_title').toArray();
+      for (let ele of arrParagraph) {
+        if (ele.getAttribute('style').indexOf('font-weight: medium') != -1) {
+          ele.style.fontWeight = 700;
+        }
+      }
+    }
+    let listCodes = document.getElementsByClassName('zalo_zinstant_code_image');
+    for (let img of listCodes) {
+      let param = img.getAttribute('data-param-data');
+      let paramData = JSON.parse(param);
+      let parentImg = img.parentElement;
+      if (paramData.type == 0) {
+        parentImg.classList.add('qr');
+      } else if (paramData.type == 9) {
+        parentImg.classList.add('barcode');
+      }
+      img.style.opacity = 0;
+    }
+    let arrayActionElements = [
+      $('.zalo_zinstant_button_primary_wrapper').get(0),
+      $('.zalo_zinstant_button_secondary_wrapper').get(0),
+      $('.zalo_zinstant_button_custom_wrapper').get(0),
+    ];
+    if ($('.zalo_zinstant_map_image_slide_item')) {
+      let arr = $('.zalo_zinstant_map_image_slide_item').toArray();
+      arrayActionElements = arrayActionElements.concat(arr);
+    }
+    for (let button of arrayActionElements) {
+      if (button) {
+        try {
+          let action = button.getAttribute('data-click-action');
+          if (action === 'action.open.inapp') {
+            let link = button.getAttribute('data-click-data');
+            button.addEventListener('click', function () {
+              window.open(link, '_blank');
+            });
+            button.style.cursor = 'pointer';
+          }
+          if (action === 'action.open.phone') {
+            let actionData = button.getAttribute('data-click-data');
+            try {
+              let phone = JSON.parse(actionData)?.phoneCode;
+              button.addEventListener('click', function () {
+                window.open(`tel:${phone}`);
+              });
+              button.style.cursor = 'pointer';
+            } catch (error) {
+              console.log('error', error);
+            }
+          }
+        } catch (error) {
+          console.log('error');
+        }
+      }
+    }
+    if ($('.zalo_zinstant_map_image_slide_item')) {
+      $('.zalo_zinstant_map_image_slide_item').append(function () {
+        if (this.getAttribute('data-click-action') === 'action.open.inapp') {
+          let link = this.getAttribute('data-click-data');
+          return `<a class='zalo_zinstant_map_image_slide_item_link' href='${link}' target='_blank'></a>`;
+        }
+        return;
+      });
+    }
+    if ($('.zalo_zinstant_map_image_slider')) {
+      $('.zalo_zinstant_map_image_slider').addClass('swiper');
+      $('.zalo_zinstant_map_image_slider').after('<div id="dot-container"></div>');
+      $('.zalo_zinstant_map_image_slide_item').addClass('swiper-slide');
+      $('.zalo_zinstant_map_image_slider').children().wrapAll('<div class="swiper-wrapper"></div>');
+      $('.zalo_zinstant_map_image_slider').append('<div class="swiper-pagination"></div>');
+      let numOfSlides = $('.zalo_zinstant_map_image_slide_item').length;
+      const swiper = new Swiper('.swiper', {
+        slidesPerView: 1,
+        direction: 'horizontal',
+        loop: true,
+        centeredSlides: true,
+        enabled: numOfSlides > 1 ? true : false,
+        autoplay:
+          numOfSlides > 1
+            ? {
+                delay: 2000,
+                disableOnInteraction: false,
+              }
+            : false,
+        pagination: {
+          el: '.swiper-pagination',
+        },
+      });
+    }
+  </script>
+</html>
