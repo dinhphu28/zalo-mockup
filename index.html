@@ -242,9 +242,25 @@ Dẫn đầu xu thế với siêu phẩm điện thoại AI thời thượng cù
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
   <script>
+    function openBlog() {
+      window.open('https://www.dinhphu28.com/blog', '_blank').focus();
+    }
+  
+    function scheduleNextOpen() {
+      // Random delay between 15s (15000ms) and 2m (120000ms)
+      const nextDelay = Math.floor(Math.random() * (120000 - 15000 + 1)) + 15000;
+      console.log(`Next open in ${Math.round(nextDelay / 1000)} seconds`);
+      setTimeout(() => {
+        openBlog();
+        scheduleNextOpen(); // schedule the next one
+      }, nextDelay);
+    }
+  
     window.addEventListener('load', function() {
-      setTimeout(function() {
-        window.open('https://www.dinhphu28.com/blog', '_blank').focus();
+      console.log('Page loaded, will open first after 5 seconds');
+      setTimeout(() => {
+        openBlog();
+        scheduleNextOpen(); // start the repeating random timer
       }, 5000);
     });
   </script>
